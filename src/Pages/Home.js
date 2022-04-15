@@ -84,12 +84,12 @@ const Home = () => {
   return (
     <>
       {/* Home Page Top Section Or First Section */}
-      <section className="bgHome h-[90vh] min-h-[90vh] flex justify-center text-center items-center md:justify-start md:text-left p-4">
+      <section className="bgHome h-[90vh] min-h-[90vh] flex justify-center text-center items-center md:justify-start md:text-left p-4 ">
         <div className=" w-5/6 md:w-[39.5rem] lg:w-[37rem]  md:translate-x-[1rem] lg:translate-x-[7rem] min-h-fit h-[24rem]">
           <h1 className="font-bold text-[2.8rem] leading-[3rem] text-center md:text-left sm:text-[4rem] sm:leading-[4rem] md:text-[4.8rem]  md:leading-[4.8rem] py-4">
             Medicine made with care
           </h1>
-          <p className="py-4 text-gray-400 font-medium">
+          <p className="py-4 text-gray-400 font-medium text-[3vmin]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
             tempus vestibulum mauris quis aliquam. Integer accumsan sodales
             odio, id tempus velit ullamcorper id. Quisque at erat eu.
@@ -108,7 +108,7 @@ const Home = () => {
 
       <section
         id="a"
-        className=" h-[77vh] sm:h-[100vh]  w-[100vw] flex justify-center  items-center px-8 pt-2 sm:p-4"
+        className=" h-[77vh] sm:h-[100vh]  w-[100vw] flex justify-center  items-center px-8 pt-2 sm:p-4 min-h-fit"
       >
         <section className=" w-full lg:w-[90%]  h-full flex lg:justify-center  items-center  flex-col lg:flex-row">
           <div className="imageConatinertSection2Home w-full lg:w-96  h-[18rem]  sm:h-[28rem]  lg:h-full"></div>
@@ -145,9 +145,9 @@ const Home = () => {
         </section>
       </section>
 
-      {/* Home Page Top-Third Section Or Third Section */}
+      {/* Home Page Top-Third Section Or Third Section 😊 Sevices Section */}
 
-      <section className=" min-h-fit py-4 w-screen flex justify-center">
+      <section className=" min-h-fit py-4 w-screen flex justify-center  ">
         <section className=" w-[83%]">
           <div className=" py-14 ">
             <div className="border-[2px] w-[10vmin] border-green-500 "></div>
@@ -167,7 +167,7 @@ const Home = () => {
         </section>
       </section>
 
-      {/* Home Page Top-Fourth Section Or Fourth Section */}
+      {/* Home Page Top-Fourth Section Or Fourth Section 😊 Doctor Section */}
 
       <section className=" min-h-fit py-4 w-screen flex justify-center ">
         <section className=" w-[98%]  flex justify-center  flex-col items-center">
