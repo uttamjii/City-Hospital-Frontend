@@ -147,6 +147,19 @@ body {
   @apply text-xl font-bold py-3 hover:text-[1.28rem] transition-all duration-[0.5s] text-gray-500 p-2;
 }
 
+.whichPage {
+  background: linear-gradient(
+      to bottom,
+      rgba(3, 3, 65, 0.799),
+      rgba(3, 3, 65, 0.742)
+    ),
+    url("./images/whichPage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
 /* *** Utility Classes */
 .pClass {
   @apply p-4 text-gray-400 font-medium text-[3vmin];
