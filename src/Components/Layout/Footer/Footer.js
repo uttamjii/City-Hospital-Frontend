@@ -61,17 +61,20 @@ const Footer = () => {
             <Link to="/" className="footerLinks">
               <ArrowRightAltIcon /> Home
             </Link>
-            <Link to="/" className="footerLinks">
+            <Link to="/contact" className="footerLinks">
               <ArrowRightAltIcon /> Contact Us
             </Link>
-            <Link to="/" className="footerLinks">
+            <Link to="/services" className="footerLinks">
               <ArrowRightAltIcon /> Services
             </Link>
-            <Link to="/" className="footerLinks">
+            <Link to="/appointment" className="footerLinks">
               <ArrowRightAltIcon /> Appointment
             </Link>
-            <Link to="/" className="footerLinks">
+            <Link to="/about" className="footerLinks">
               <ArrowRightAltIcon /> About Us
+            </Link>
+            <Link to="/doctors" className="footerLinks">
+              <ArrowRightAltIcon /> Doctors
             </Link>
           </section>
           <section className="third  w-full h-4/5 min-h-fit flexColStart">

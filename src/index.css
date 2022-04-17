@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/*  ** Scrollbar Css 😀😀 */
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -21,6 +23,8 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* ** Universal Css 😁😁 */
 
 * {
   scroll-behavior: smooth;
@@ -76,7 +80,7 @@ body {
 }
 
 .imageConatinertSection2Home {
-  background-image: url("./images/homeSection2.png");
+  background-image: url("./images/homeSection2.jpg");
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -159,6 +163,77 @@ body {
   background-repeat: no-repeat;
 }
 
+.whichPageAbout {
+  background: linear-gradient(
+      to bottom,
+      rgba(3, 3, 65, 0.799),
+      rgba(3, 3, 65, 0.742)
+    ),
+    url("./images/whichPage3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.whichPageServices {
+  background: linear-gradient(
+      to bottom,
+      rgba(3, 3, 65, 0.799),
+      rgba(3, 3, 65, 0.742)
+    ),
+    url("./images/whichPage2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.whichPageContact {
+  background: linear-gradient(
+      to bottom,
+      rgba(3, 3, 65, 0.799),
+      rgba(3, 3, 65, 0.742)
+    ),
+    url("./images/whichPageContact.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.whichPageDoctors {
+  background: linear-gradient(
+      to bottom,
+      rgba(3, 3, 65, 0.799),
+      rgba(3, 3, 65, 0.742)
+    ),
+    url("./images/whichPage4.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.patientTestinmonials {
+  background: linear-gradient(to bottom, #29318ecd, #29318eb3),
+    url("./images/patientTestinmonials.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.patientQuoteIcon {
+  width: 3rem !important;
+  height: 3rem !important;
+  color: white;
+}
+
+.contactPageIcons {
+  width: 2rem !important;
+  height: 2rem !important;
+  color: white;
+  background: #22c55e;
+  border-radius: 50%;
+
+  @apply shadow-lg transition-all p-2 my-1;
+  cursor: pointer;
+}
 
 /* *** Utility Classes */
 .pClass {

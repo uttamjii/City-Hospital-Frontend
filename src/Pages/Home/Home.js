@@ -105,7 +105,7 @@ const Home = () => {
 
       {/* Home Page Top-Fourth Section Or Fourth Section 😊 Doctor Section */}
 
-      <DoctorSection doctors={doctors} />
+      <DoctorSection doctors={doctors}  title={true}/>
     </>
   );
 };
