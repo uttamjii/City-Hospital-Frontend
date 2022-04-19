@@ -9,6 +9,7 @@ const Header = () => {
   const [headerFixed, setHeaderFixed] = useState("");
   const [logoCard, setLogoCard] = useState("");
 
+
   const toggleHam = () => {
     if (toggleMenu === "") {
       setToggleMenu("translateHam");
@@ -36,8 +37,11 @@ const Header = () => {
       <header
         className={`w-full h-24 bg-white flex justify-end items-center shadow-sm ${headerFixed}`}
       >
+
+      {/* Logo */}
         <section
           className={`absolute left-4 lg:left-28 top-0 bg-white shadow-lg border-cyan-500 h-[9rem] md:h-[11rem] w-[15rem] rounded-b-md border-b-4  border-b-green-500 ${logoCard} transition-all`}
+          
         >
           <div className="flex justify-center items-center h-full w-full flex-col">
             <h1 className="antialiased font-bold text-2xl">

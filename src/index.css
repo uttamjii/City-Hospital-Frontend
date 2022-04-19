@@ -235,6 +235,18 @@ body {
   cursor: pointer;
 }
 
+.contactCardInfoIcon{
+  width: 2rem !important;
+  height: 2rem !important;
+  color: #22c55e;
+}
+
+.scrollToTopIcon{
+  width: 7.3vmin !important;
+  height: 7.3vmin !important;
+  color: #22c55e;
+  @apply drop-shadow-lg hover:drop-shadow-xl hover:animate-bounce ;
+}
 /* *** Utility Classes */
 .pClass {
   @apply p-4 text-gray-400 font-medium text-[3vmin];

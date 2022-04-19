@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import doctorUrl from "../../images/doctor1.jpg";
 import ServiceSection from "../../Components/ServiceSection/ServiceSection";
 import DoctorSection from "../../Components/DoctorSection/DoctorSection";
+import ContactCardInfo from "../../Components/ContactCardInfo/ContactCardInfo";
+
 
 const Home = () => {
   const doctors = [
@@ -105,7 +107,30 @@ const Home = () => {
 
       {/* Home Page Top-Fourth Section Or Fourth Section 😊 Doctor Section */}
 
-      <DoctorSection doctors={doctors}  title={true}/>
+      <DoctorSection doctors={doctors} title={true} />
+
+
+
+      {/* Contact Info Card */}
+
+      <section className=" min-h-fit py-4 w-screen flex justify-center mb-[3rem] ">
+        <section className=" w-[98%]  flex justify-center  flex-col items-center">
+          
+            <div className=" py-12 text-center w-9/12  ">
+              <h1 className="text-[8vmin] font-bold drop-shadow-md leading-[8vmin]">
+              Contact Us
+              </h1>
+              <p className="p-4 text-gray-400 font-medium text-[3vmin]">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optiore.
+                Reiciendis optio recusandae exercitationem.
+              </p>
+            </div>
+
+          <ContactCardInfo />
+
+        </section>
+      </section>
+
     </>
   );
 };

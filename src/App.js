@@ -9,6 +9,7 @@ import About from "./Pages/About/About.js";
 import Service from "./Pages/Services/Services.js";
 import Doctors from "./Pages/Doctors/Doctors.js";
 import Contact from "./Pages/Contact/Contact.js";
+import ScrollToTop from "./Components/ScrollToTop/ScrollToTop.js";
 
 const App = () => {
   return (
@@ -20,10 +21,14 @@ const App = () => {
         <Route path="/services" element={<Service />} />
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/contact" element={<Contact />} />
+
+        {/* <Route path="*" element={<Home />} /> */}
       </Routes>
 
       <FooterTop />
       <Footer />
+
+      <ScrollToTop />
     </BrowserRouter>
   );
 };

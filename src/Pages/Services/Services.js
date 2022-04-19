@@ -8,21 +8,18 @@ import cardImage3 from "../../images/cardImage3.jpg";
 const Service = () => {
   const cardInfo = [
     {
-      id: 1,
       title: "We help you ",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
       image: cardImage1,
     },
     {
-      id: 1,
       title: "Medicine for you",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
       image: cardImage2,
     },
     {
-      id: 1,
       title: "Amazing technology",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
@@ -41,9 +38,9 @@ const Service = () => {
 
         <section className="py-12 px-4 min-h-fit flex justify-center items-center bg-blue-900 mt-12">
           <section className="w-11/12 min-h-fit lg:h-screen grid grid-cols-1 lg:grid-cols-3 place-items-center gap-6">
-            {cardInfo.map((card) => (
+            {cardInfo.map((card ,index) => (
               <div
-                key={card.id}
+                key={index}
                 className=" p-4 w-full  bg-white transition-all duration-[.4s] hover:-translate-y-2 hover:shadow-lg rounded-sm shadow-lg"
               >
                 <img
