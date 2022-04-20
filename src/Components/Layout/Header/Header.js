@@ -211,6 +211,17 @@ const Header = () => {
           {" "}
           Profile
         </NavLink>
+        <NavLink
+          to="/login"
+          className="hover:text-green-500 transition-all "
+          style={(navData) => ({
+            color: navData.isActive ? "#22C55E" : "",
+          })}
+          onClick={toggleHam}
+        >
+          {" "}
+          login / register
+        </NavLink>
         <div className=" relative bottom-[-5rem] text-xl">
           <h1 className="font-bold  selection:text-green-500 flex  items-center w-full ">
             For Emergencies: +563 47558 623
