@@ -105,6 +105,16 @@ const Header = () => {
               Contact
             </NavLink>
             <NavLink
+              to="/login"
+              className="hover:text-green-500 transition-all"
+              style={(navData) => ({
+                color: navData.isActive ? "#22C55E" : "",
+              })}
+            >
+              {" "}
+            login
+            </NavLink>
+            {/* <NavLink
               to="/profile"
               className="hover:text-green-500 transition-all"
               style={(navData) => ({
@@ -113,7 +123,7 @@ const Header = () => {
             >
               {" "}
               Profile
-            </NavLink>
+            </NavLink> */}
           </div>
           <div
             className="lg:hidden cursor-pointer translate-x-[3rem] "

@@ -10,6 +10,8 @@ import Service from "./Pages/Services/Services.js";
 import Doctors from "./Pages/Doctors/Doctors.js";
 import Contact from "./Pages/Contact/Contact.js";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop.js";
+import Login from "./Pages/Login/Login.js";
+import SignUp from "./Pages/SignUp/SignUp.js";
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
         <Route path="/services" element={<Service />} />
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
 
         {/* <Route path="*" element={<Home />} /> */}
       </Routes>

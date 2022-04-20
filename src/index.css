@@ -211,6 +211,30 @@ body {
   background-repeat: no-repeat;
 }
 
+.whichPageLogin {
+  background: linear-gradient(
+      to bottom,
+      rgba(3, 3, 65, 0.799),
+      rgba(3, 3, 65, 0.742)
+    ),
+    url("./images/whichPage5.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.whichPageSignUp {
+  background: linear-gradient(
+      to bottom,
+      rgba(3, 3, 65, 0.799),
+      rgba(3, 3, 65, 0.742)
+    ),
+    url("./images/whichPage6.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .patientTestinmonials {
   background: linear-gradient(to bottom, #29318ecd, #29318eb3),
     url("./images/patientTestinmonials.jpg");

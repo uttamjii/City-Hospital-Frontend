@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const WhichPage = ({ whichPage }) => {
   const page = whichPage.toLowerCase();
+  console.log(page);
 
   return (
     <section
@@ -15,6 +16,10 @@ const WhichPage = ({ whichPage }) => {
           ? "whichPageDoctors"
           : page === "about"
           ? "whichPageAbout"
+          : page === "login"
+          ? "whichPageLogin"
+          : page === "sign up"
+          ? "whichPageSignUp"
           : "whichPage"
       }`}
     >

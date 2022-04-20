@@ -58,30 +58,30 @@ const Contact = () => {
             <form action="" className=" p-4 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 place-items-center gap-4">
                 <input
-                  className="bg-gray-200 shadow-sm px-3 placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-sm"
+                  className="bg-gray-200 shadow-sm px-3 placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md"
                   type="text"
                   placeholder="Name"
                 />
                 <input
-                  className="bg-gray-200 shadow-sm px-3 placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-sm"
+                  className="bg-gray-200 shadow-sm px-3 placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md"
                   type="text"
                   placeholder="Email"
                 />
               </div>
               <input
                 type="text"
-                className="bg-gray-200 shadow-sm px-3 placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-sm"
+                className="bg-gray-200 shadow-sm px-3 placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md"
                 placeholder="Subject"
               />
 
               <textarea
-                className="bg-gray-200 shadow-sm px-3 placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all py-2 w-full outline-none h-[12rem]  resize-y  rounded-sm"
+                className="bg-gray-200 shadow-sm px-3 placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all py-2 w-full outline-none h-[12rem]  resize-y  rounded-md"
                 placeholder="Message"
               ></textarea>
 
               <div className="my-4 drop-shadow-sm ">
-                <div className=" inline relative hoverEffect text-white  bg-blue-900    p-[2.5vmin]  ">
-                  <button className="text-[3vmin] font-bold relative z-[3] ">
+                <div className=" inline relative hoverEffect text-white  bg-blue-900  py-[1.7vmin] rounded-md ">
+                  <button className="text-[2.5vmin] font-bold relative z-[3] w-full ">
                     Submit
                   </button>
                 </div>
