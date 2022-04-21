@@ -12,6 +12,9 @@ import Contact from "./Pages/Contact/Contact.js";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop.js";
 import Login from "./Pages/Login/Login.js";
 import SignUp from "./Pages/SignUp/SignUp.js";
+import Profile from "./Pages/Profile/Profile.js";
+import EditProfile from "./Pages/EditProfile/EditProfile.js";
+import ChangePassword from "./Pages/ChangePassword/ChangePassword.js";
 
 const App = () => {
   return (
@@ -25,6 +28,9 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/editprofile" element={<EditProfile />} />
+        <Route path="/profile/changepassword" element={<ChangePassword />} />
 
         {/* <Route path="*" element={<Home />} /> */}
       </Routes>

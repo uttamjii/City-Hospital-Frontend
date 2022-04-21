@@ -3,6 +3,7 @@ import HeaderTop from "./HeaderTop";
 import ClearAllOutlinedIcon from "@mui/icons-material/ClearAllOutlined";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { NavLink } from "react-router-dom";
+import image from "../../../images/doctor1.jpg";
 
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState("");
@@ -19,8 +20,10 @@ const Header = () => {
   };
 
   window.addEventListener("scroll", () => {
-    if (toggleMenu === "translateHam") {
-      setToggleMenu("");
+    if (window.scrollY > 150) {
+      if (toggleMenu === "translateHam") {
+        setToggleMenu("");
+      }
     }
     if (window.scrollY >= 47) {
       setHeaderFixed("headerFiexd");
@@ -38,10 +41,10 @@ const Header = () => {
         className={`w-full h-24 bg-white flex justify-end items-center shadow-sm ${headerFixed}`}
       >
 
-      {/* Logo */}
+        {/* Logo */}
         <section
           className={`absolute left-4 lg:left-28 top-0 bg-white shadow-lg border-cyan-500 h-[9rem] md:h-[11rem] w-[15rem] rounded-b-md border-b-4  border-b-green-500 ${logoCard} transition-all`}
-          
+
         >
           <div className="flex justify-center items-center h-full w-full flex-col">
             <h1 className="antialiased font-bold text-2xl">
@@ -112,9 +115,9 @@ const Header = () => {
               })}
             >
               {" "}
-            login
+              login
             </NavLink>
-            {/* <NavLink
+            <NavLink
               to="/profile"
               className="hover:text-green-500 transition-all"
               style={(navData) => ({
@@ -122,8 +125,8 @@ const Header = () => {
               })}
             >
               {" "}
-              Profile
-            </NavLink> */}
+                        <img src={image} alt="avatar " className="w-9 h-9 rounded-full border-2 border-green-500 transition-all duration-[.5s] hover:scale-125 cursor-pointer object-cover inline" />
+            </NavLink>
           </div>
           <div
             className="lg:hidden cursor-pointer translate-x-[3rem] "

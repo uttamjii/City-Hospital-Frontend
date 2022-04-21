@@ -33,6 +33,10 @@
   color: #22c55e;
 }
 
+* {
+  image-rendering: optimizeQuality;
+}
+
 body {
   overflow-x: hidden !important;
 }
@@ -157,9 +161,9 @@ body {
       rgba(3, 3, 65, 0.799),
       rgba(3, 3, 65, 0.742)
     ),
-    url("./images/whichPage.jpg");
+    url("./images/whichPage6.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center left;
   background-repeat: no-repeat;
 }
 
@@ -259,18 +263,43 @@ body {
   cursor: pointer;
 }
 
-.contactCardInfoIcon{
+.contactCardInfoIcon {
   width: 2rem !important;
   height: 2rem !important;
   color: #22c55e;
 }
 
-.scrollToTopIcon{
+.scrollToTopIcon {
   width: 7.3vmin !important;
   height: 7.3vmin !important;
   color: #22c55e;
-  @apply drop-shadow-lg hover:drop-shadow-xl hover:animate-bounce ;
+  @apply drop-shadow-lg hover:drop-shadow-xl hover:animate-bounce;
 }
+
+.profileImage::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: rotate(45deg);
+  background: linear-gradient(to bottom, #22c55eaa, #22c55eaa);
+  border-radius: 2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.219);
+  transition: all  0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+}
+
+.profileIcons{
+  width: 3vmin !important;
+  height: 3vmin !important;
+  padding: 0;
+  margin: 0;
+}
+
 /* *** Utility Classes */
 .pClass {
   @apply p-4 text-gray-400 font-medium text-[3vmin];
@@ -281,3 +310,4 @@ body {
 .flexColStart {
   @apply flex flex-col justify-center items-start;
 }
+
