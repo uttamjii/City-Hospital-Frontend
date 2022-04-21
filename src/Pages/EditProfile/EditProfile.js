@@ -1,6 +1,7 @@
 import WhichPage from '../../Components/whichPageComponent/WhichPage'
 import React, { useState } from 'react'
-import { Link ,useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
 
 
 import avatarPreviewImage from '../../images/avatarPreview.png'
@@ -68,7 +69,7 @@ const EditProfile = () => {
                     </form>
                     <div className="text-right   py-4 lg:px-4 truncate">
 
-                        <Link to="/login" className="text-right text-gray-500 text-sm hover:text-green-500"><span className="font-semibold drop-shadow-md" onClick={() => navigate(-1)}>Don't Change?</span> Go back</Link>
+                        <div onClick={() => navigate(-1)}   className="text-right text-gray-500 text-sm hover:text-green-500 cursor-pointer"><span className="font-semibold drop-shadow-md" >Don't Change?</span> Go back</div>
                     </div>
 
 
