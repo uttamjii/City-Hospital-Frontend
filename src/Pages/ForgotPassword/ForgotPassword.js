@@ -1,53 +1,52 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import WhichPage from "../../Components/whichPageComponent/WhichPage";
 
-import googleIcon from "../../images/google.png";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../Actions/userActions";
+import { forgotPassword } from "../../Actions/userActions";
 
-const Login = () => {
+const ForgotPassword = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const buttonRef = useRef();
-  const [buttonText, setButtonText] = useState("login");
- 
-
-  const { isAuthenticated ,loading } = useSelector((state) => state.user);
+  const [buttonText, setButtonText] = useState("Send Mail");
+  const { message, error, loading } = useSelector(
+    (state) => state.forgotPassword
+  );
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    
+    setButtonText("Sending...");
     buttonRef.current.disabled = true;
-    setButtonText("Please Wait...");
-
-    dispatch(loginUser(e.target.email.value, e.target.password.value));
+    dispatch(forgotPassword(e.target.email.value));
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate(-1);
+    if (message) {
+      dispatch({ type: "addMessage", payload: message });
+    }
+    if (error) {
+      dispatch({ type: "addErrors", payload: error });
     }
     if (loading === false) {
+      setButtonText("Send Mail");
       buttonRef.current.disabled = false;
-      setButtonText("login");
     }
-  }, [isAuthenticated, navigate, loading]);
+  }, [message, error, dispatch, loading]);
 
   return (
     <>
-      <WhichPage whichPage="Login" />
+      <WhichPage whichPage=" Forgot Password" />
 
       <section className="min-h-fit pb-16 px-4 ">
         <div className=" py-14 ml-8 sm:ml-[5.4rem]  hover:text-green-500 ">
           <div className="border-[2px] w-[10vmin] border-green-500 my-2"></div>
           <h1 className="text-[5vmin] font-semibold text-left drop-shadow-md ">
-            Login{" "}
-            <span className="text-[3vmin] text-gray-400 font-bold hover:text-blue-900">
+            Forgot Password{" "}
+            {/* <span className="text-[3vmin] text-gray-400 font-bold hover:text-blue-900">
               OR
             </span>{" "}
-            Sign In
+            Sign In */}
           </h1>
         </div>
 
@@ -61,15 +60,6 @@ const Login = () => {
               placeholder="Email (Required)"
               name="email"
               required
-              autoComplete="true"
-            />
-            <input
-              type="password"
-              className="bg-gray-200 shadow-sm px-3 placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md"
-              placeholder="Password (Required)"
-              name="password"
-              required
-              autoComplete="true"
             />
 
             <div className="my-4 drop-shadow-sm py-3 w-full  box-border">
@@ -86,13 +76,13 @@ const Login = () => {
           </form>
           <div className="flex justify-between items-center flex-col sm:flex-row   py-4 lg:px-4 truncate space-y-4 sm:space-y-0">
             <Link
-              to="/forgotpassword"
+              to="/login"
               className="text-right text-gray-500 text-sm hover:text-green-500"
             >
               <span className="font-semibold drop-shadow-md">
-                Forgotten password?
+                have an account?
               </span>{" "}
-              Send Mail
+              Sign In
             </Link>
 
             <Link
@@ -105,19 +95,10 @@ const Login = () => {
               Sign Up
             </Link>
           </div>
-
-          <div className="text-center  py-2 font-bold hover:text-green-500 drop-shadow-md ">
-            Or
-          </div>
-
-          <div className="text-center   py-2 font-bold bg-red-600  hover:bg-red-500 cursor-pointer hover:text-white transition-all duration-500  flex justify-center items-center rounded-md">
-            <img src={googleIcon} alt="google" className="h-4 w-4" />
-            <span className="px-2 font-bold drop-shadow-md">Google</span>
-          </div>
         </section>
       </section>
     </>
   );
 };
 
-export default Login;
+export default ForgotPassword;

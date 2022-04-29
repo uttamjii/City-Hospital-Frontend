@@ -7,6 +7,7 @@ import ContactCardInfo from "../../Components/ContactCardInfo/ContactCardInfo";
 
 
 const Home = () => {
+
   const doctors = [
     {
       name: "Dr. John Doe",
@@ -53,7 +54,7 @@ const Home = () => {
           </p>
           <div className="my-6">
             <div className=" inline relative hoverEffect text-white  bg-blue-900  font-bold text-base p-4 text-[3vmin] ">
-              <Link to="/" className=" relative z-[3] ">
+              <Link to="/appointment" className=" relative z-[3] ">
                 Make an appointment
               </Link>
             </div>
@@ -87,11 +88,11 @@ const Home = () => {
               </p>
               <div className="my-4  mt-[2rem] space-x-4  flex flex-wrap items-center justify-center lg:justify-start lg:flex-none lg:space-x-4 lg:w-[124%] ">
                 <div className=" inline relative hoverEffect text-white  bg-blue-900  font-bold text-base p-[2.5vmin] text-[3vmin] ">
-                  <Link to="/" className=" relative z-[3] ">
+                  <Link to="/appointment" className=" relative z-[3] ">
                     Make an appointment
                   </Link>
                 </div>
-                <div className=" inline relative hoverEffect text-white  bg-blue-900  font-bold text-base p-[2.5vmin] text-[3vmin]">
+                <div className="my-4  inline relative hoverEffect text-white  bg-blue-900  font-bold text-base p-[2.5vmin] text-[3vmin]">
                   <Link to="/contact" className=" relative z-[3] ">
                     Contact Us
                   </Link>
