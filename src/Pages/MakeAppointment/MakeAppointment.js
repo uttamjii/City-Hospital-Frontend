@@ -223,14 +223,16 @@ const MakeAppointment = () => {
             </section>
             <input
               type="date"
-              className="bg-gray-200 shadow-sm px-3 placeholder:font-normal   font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md  "
+              className="bg-gray-200 shadow-sm  px-3 pr-[1rem] md:pr-3 placeholder:font-normal   font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md  "
               required
               name="appointmentDate"
+              placeholder="Appointment Date (Required)"
             />{" "}
             <input
               type="time"
-              className="bg-gray-200 shadow-sm px-3 placeholder:font-normal   font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md  "
+              className="bg-gray-200 shadow-sm  px-3 pr-[1rem] md:pr-3 placeholder:font-normal   font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md  "
               name="appointmentTime"
+              placeholder="Appointment Time (Optional)"
             />
             <textarea
               className="bg-gray-200 shadow-sm px-3 placeholder:font-normal   font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md  "

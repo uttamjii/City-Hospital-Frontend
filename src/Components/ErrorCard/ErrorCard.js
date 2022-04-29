@@ -16,7 +16,7 @@ const ErrorCard = () => {
       {error && (
         <section className="fixed bottom-4  w-screen flex  justify-center z-50 max-[100vw]">
           <div
-            className=" text-center p-2 sm:py-4 sm:px-4 drop-shadow-lg duration-500 rounded-lg bg-gray-200 hover:-translate-y-2 hover:shadow-inner cursor-pointer "
+            className=" text-center p-2 sm:py-4 sm:px-4 drop-shadow-lg duration-500 rounded-lg bg-gray-200 hover:-translate-y-2 hover:shadow-inner cursor-pointer truncate "
             onClick={() => {
               errorCard.current.classList.toggle("hidden");
             }}
@@ -37,7 +37,7 @@ const ErrorCard = () => {
       {user?.message && (
         <section className="fixed bottom-4  w-screen flex  justify-center z-50 max-[100vw]">
           <div
-            className=" text-center p-2 sm:py-4 sm:px-4 drop-shadow-lg duration-500 rounded-lg bg-gray-200 hover:-translate-y-2 hover:shadow-inner cursor-pointer "
+            className=" text-center p-2 sm:py-4 sm:px-4 drop-shadow-lg duration-500 rounded-lg bg-gray-200 hover:-translate-y-2 hover:shadow-inner cursor-pointer truncate"
             onClick={() => {
                 successCard.current.classList.toggle("hidden");
             }}
