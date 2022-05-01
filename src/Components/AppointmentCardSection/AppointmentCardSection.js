@@ -65,11 +65,16 @@ const AppointmentCard = ({ appointments }) => {
     );
   };
 
+  
+  const [hideDeleteButton, setHideDeleteButton] = useState("");
+
   // Delete Appointment
 
   const deleteAppointmentHandler = async (id) => {
+    setHideDeleteButton("hidden")
     await dispatch(deleteAppointment(id));
-    dispatch(getAllUserAppointments());
+    await dispatch(getAllUserAppointments());
+    setHideDeleteButton("");
   };
 
   useEffect(() => {
@@ -91,7 +96,7 @@ const AppointmentCard = ({ appointments }) => {
     <>
       {appointments && appointments.length > 0 ? (
         <>
-          <section className=" min-h-fit max-h-[80vh] overflow-y-scroll py-[1.8vmin] px-[2.3vmin] w-11/12 m-auto grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6  place-items-center drop-shadow-md border-2 ">
+          <section className=" min-h-fit max-h-[90vh] overflow-y-auto py-[1.8vmin] px-[2.3vmin] w-11/12 m-auto grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6  place-items-center drop-shadow-md shadow-lg ">
             {appointments.map((appointment, index) => (
               <section
                 className=" w-full min-h-[14rem] h-full  transition-all shadow-xl hover:shadow-inner bg-white   duration-500  rounded-md "
@@ -102,7 +107,7 @@ const AppointmentCard = ({ appointments }) => {
                     {appointments.length - index}
                   </h1>
                   <h1
-                    className="text-lg font-bold  drop-shadow-md rounded-[50%] bg-green-500 p-2 h-12 w-12 text-center hover:bg-blue-900 hover:text-white duration-500 cursor-pointer selection:text-white"
+                    className={`text-lg font-bold  drop-shadow-md rounded-[50%] bg-green-500 p-2 h-12 w-12 text-center hover:bg-blue-900 hover:text-white duration-500 cursor-pointer selection:text-white ${hideDeleteButton}`}
                     onClick={() => {
                       deleteAppointmentHandler(appointment._id);
                     }}

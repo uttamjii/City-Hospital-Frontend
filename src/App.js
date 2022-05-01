@@ -23,6 +23,13 @@ import ResetPassword from "./Pages/ResetPassword/ResetPassword.js";
 import MakeAppointment from "./Pages/MakeAppointment/MakeAppointment.js";
 import DashBoardAdminIcon from "./Components/DashBoardAdminIcon/DashBoardAdminIcon.js";
 import AdminDashoard from "./Pages/AdminDashboard/AdminDashoard.js";
+import InfoSection from "./Pages/AdminDashboard/InfoSection/InfoSection.js";
+import { getAllBasicInfo } from "./Actions/infoAction.js";
+import UserSection from "./Pages/AdminDashboard/UserSection/UserSection.js";
+import DoctorsSection from "./Pages/AdminDashboard/DoctorsSection/DoctorsSection.js";
+import AppointmentSection from "./Pages/AdminDashboard/AppointmentSection/AppointmentSection.js";
+import ContactMessageSection from "./Pages/AdminDashboard/ContactMessageSection/ContactMessageSection.js";
+import UpdateUserRole from "./Pages/AdminDashboard/UserSection/UpdateUserRole/UpdateUserRole.js";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -37,6 +44,7 @@ const App = () => {
     } else {
       dispatch({ type: "clearAllDataIfNoCookie" });
     }
+    dispatch(getAllBasicInfo());
   }, [dispatch]);
 
   useEffect(() => {
@@ -79,9 +87,17 @@ const App = () => {
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/appointment" element={<MakeAppointment />} />
-        
+
         {isAuthenticated && user.role === "admin" ? (
-          <Route path="/dashboard" element={<AdminDashoard />} />
+          <Route path="/admin/dashboard" element={<AdminDashoard />}>
+            <Route index element={<InfoSection />} />
+            <Route path="info" element={<InfoSection />} />
+            <Route path="users" element={<UserSection />} />
+            <Route path="users/updaterole/:id" element={<UpdateUserRole />} />
+            <Route path="doctors" element={<DoctorsSection />} />
+            <Route path="appointments" element={<AppointmentSection />} />
+            <Route path="contactmessages" element={<ContactMessageSection />} />
+          </Route>
         ) : null}
 
         <Route

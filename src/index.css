@@ -289,17 +289,15 @@ body {
   background: linear-gradient(to bottom, #22c55eaa, #22c55eaa);
   border-radius: 2rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.219);
-  transition: all  0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.profileIcons{
+.profileIcons {
   width: 3vmin !important;
   height: 3vmin !important;
   padding: 0;
   margin: 0;
 }
-
 
 /* *** Utility Classes */
 .pClass {
@@ -312,3 +310,8 @@ body {
   @apply flex flex-col justify-center items-start;
 }
 
+@media screen and (max-width: 244px) {
+#logoCard{
+  left: 0;
+}
+}

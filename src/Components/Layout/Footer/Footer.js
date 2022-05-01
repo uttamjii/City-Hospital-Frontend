@@ -8,8 +8,10 @@ import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+  const { info } = useSelector((state) => state.info);
   return (
     <>
       <section className="relative min-h-fit lg:h-screen bg-slate-500 flex justify-center  p-4 pt-[9rem] Footer">
@@ -105,14 +107,13 @@ const Footer = () => {
               Have a Questions?
             </h1>
             <div className="footerAddressDivs">
-              <LocationOnIcon /> 203 Fake St. Mountain View, San Francisco,
-              California, USA
+              <LocationOnIcon /> {info?.address || "Will Update Soon!"}
             </div>
             <div className="footerAddressDivs">
-              <LocalPhoneIcon /> +2 392 3929 210
+              <LocalPhoneIcon /> +{info?.phoneNumber || "Will Update Soon!"}
             </div>
             <div className="footerAddressDivs">
-              <EmailIcon /> cityhospital@gmail.com
+              <EmailIcon /> {info?.email || "Will Update Soon!"}
             </div>
           </section>
         </section>

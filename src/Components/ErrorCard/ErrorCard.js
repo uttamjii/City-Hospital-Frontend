@@ -14,7 +14,7 @@ const ErrorCard = () => {
   return (
     <>
       {error && (
-        <section className="fixed bottom-4  w-screen flex  justify-center z-50 max-[100vw]">
+        <section className="fixed bottom-4  w-screen flex  justify-center z-50 max-w-[100vw]">
           <div
             className=" text-center p-2 sm:py-4 sm:px-4 drop-shadow-lg duration-500 rounded-lg bg-gray-200 hover:-translate-y-2 hover:shadow-inner cursor-pointer truncate "
             onClick={() => {
@@ -35,7 +35,7 @@ const ErrorCard = () => {
         </section>
       )}
       {user?.message && (
-        <section className="fixed bottom-4  w-screen flex  justify-center z-50 max-[100vw]">
+        <section className="fixed bottom-4  w-screen flex  justify-center z-50 max-w-[100vw]">
           <div
             className=" text-center p-2 sm:py-4 sm:px-4 drop-shadow-lg duration-500 rounded-lg bg-gray-200 hover:-translate-y-2 hover:shadow-inner cursor-pointer truncate"
             onClick={() => {

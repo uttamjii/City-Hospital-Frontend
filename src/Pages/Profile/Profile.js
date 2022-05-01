@@ -79,7 +79,7 @@ const Profile = () => {
                 Name :{" "}
               </span>{" "}
               <span className="text-lg text-gray-400 font-semibold hover:text-gray-500">
-                {user?.name || "--------"}
+                {user?.name || "Please Refresh Page"}
               </span>
             </h1>
             <h1 className="drop-shadow-sm">
@@ -87,7 +87,7 @@ const Profile = () => {
                 Email :{" "}
               </span>{" "}
               <span className="text-lg text-gray-400 font-semibold hover:text-gray-500">
-                {user?.email || "--------"}
+                {user?.email || "Please Refresh Page"}
               </span>
             </h1>
           </div>
@@ -114,7 +114,7 @@ const Profile = () => {
 
       {/* Delete Profile */}
 
-      <section className="pb-14 w-full px-4">
+      <section className="py-14 w-full px-4">
         <div className=" py-14 ml-8 sm:ml-[5.4rem]  ">
           <div className="border-[2px] w-[10vmin] border-red-500 my-2"></div>
           <h1 className="text-[5vmin] font-semibold text-red-400 text-left drop-shadow-md hover:text-green-500">

@@ -12,6 +12,7 @@ const Contact = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.user);
+  const { info } = useSelector((state) => state.info);
 
   const [name, setName] = useState(user?.name || "");
   const [email, setEmail] = useState(user?.email || "");
@@ -31,12 +32,15 @@ const Contact = () => {
     setButtonText("Sending...");
     buttonRef.current.disabled = true;
     dispatch(sendMessage(name, email, subject, message));
+   
   };
 
   useEffect(() => {
     
     if (sendMessageMessage) {
-      dispatch({ type: "addMessage", payload: sendMessageMessage });
+      dispatch({ type: "addMessageWhenLogin", payload: sendMessageMessage });
+      setSubject("");
+      setMessage("");
     }
     if (error) {
       dispatch({ type: "addErrors", payload: error });
@@ -45,7 +49,11 @@ const Contact = () => {
       setButtonText("Send Message");
       buttonRef.current.disabled = false;
     }
-  }, [sendMessageMessage, error, dispatch, loading]);
+    if(user){
+        setName(user.name);
+        setEmail(user.email);
+    }
+  }, [sendMessageMessage, error, dispatch, loading,user]);
 
   return (
     <>
@@ -71,19 +79,19 @@ const Contact = () => {
                 <p>
                   <PhoneInTalkOutlinedIcon className="contactPageIcons" />
                   <span className="font-semibold text-[3vmin]  text-gray-400 ml-2">
-                    +45 677 8993000 223
+                    +{info?.phoneNumber || "Will Update Soon!"}
                   </span>
                 </p>
                 <p>
                   <MailOutlineIcon className="contactPageIcons" />
                   <span className="font-semibold text-[3vmin] text-gray-400 ml-2">
-                    office@template.com
+                    {info?.email || "Will Update Soon!"}
                   </span>
                 </p>
                 <p>
                   <LocationOnOutlinedIcon className="contactPageIcons" />
                   <span className="font-semibold text-[3vmin] text-gray-400 ml-2">
-                    Main Str. no 45-46, b3, 56832, Los Angeles, CA
+                    {info?.address || "Will Update Soon!"}
                   </span>
                 </p>
               </div>

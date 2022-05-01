@@ -12,6 +12,7 @@ const Header = () => {
   const [logoCard, setLogoCard] = useState("");
 
   const { user, isAuthenticated } = useSelector((state) => state.user);
+  const { info } = useSelector((state) => state.info);
   const dispatch = useDispatch();
 
   const toggleHam = () => {
@@ -44,7 +45,6 @@ const Header = () => {
     if (toggleMenu === "translateHam") {
       setToggleMenu("");
     }
-
   };
 
   return (
@@ -56,6 +56,7 @@ const Header = () => {
         {/* Logo */}
         <section
           className={`absolute left-4 lg:left-28 top-0 bg-white shadow-lg border-cyan-500 h-[9rem] md:h-[11rem] w-[15rem] rounded-b-md border-b-4  border-b-green-500 ${logoCard} transition-all`}
+          id="logoCard"
         >
           <div className="flex justify-center items-center h-full w-full flex-col">
             <h1 className="antialiased font-bold text-2xl">
@@ -123,7 +124,6 @@ const Header = () => {
                 <NavLink
                   to="/"
                   className="hover:text-green-500 text-gray-600 transition-all"
-                  
                   onClick={logoutHandler}
                 >
                   {" "}
@@ -276,7 +276,6 @@ const Header = () => {
                 color: navData.isActive ? "#22C55E" : "",
               })}
               onClick={toggleHam}
-
             >
               {" "}
               login
@@ -288,7 +287,6 @@ const Header = () => {
                 color: navData.isActive ? "#22C55E" : "",
               })}
               onClick={toggleHam}
-
             >
               {" "}
               Signup
@@ -297,14 +295,15 @@ const Header = () => {
         )}
         <div className=" relative bottom-[-1rem] text-xl">
           <h1 className="font-bold  selection:text-green-500 flex  items-center w-full ">
-            For Emergencies: +563 47558 623
+            For Emergencies: +{info?.emergencyNumber || "Will Update Soon!"}
           </h1>
           <NavLink
-            to="/"
+            to="/appointment"
             className="hover:text-green-500 transition-all text--800"
             style={(navData) => ({
               color: navData.isActive ? "#22C55E" : "",
             })}
+            onClick={toggleHam}
           >
             Request an Appointment
           </NavLink>
