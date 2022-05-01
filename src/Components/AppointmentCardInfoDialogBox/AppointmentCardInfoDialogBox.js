@@ -59,7 +59,7 @@ const AppointmentCardInfoDialogBox = ({
     <>
       {appointmentData && (
         <section
-          className={`h-screen w-full min-h-fit fixed top-0 duration-500 -translate-y-[150%] bg-transparent   z-[1000] flex justify-center overflow-y-scroll bg-[#00000036]`}
+          className={`h-screen w-full min-h-fit fixed top-0 duration-500 -translate-y-[150%]   z-[1000] flex justify-center overflow-y-scroll bg-[#00000036]`}
           ref={toggleRef}
         >
           <section

@@ -6,7 +6,7 @@ import { updateAllBasicInfo } from "../../../Actions/infoAction";
 const InfoSection = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { info, message } = useSelector((state) => state.info);
+  const { info, message, loading, error } = useSelector((state) => state.info);
 
   const buttonRef = useRef();
   const [buttonText, setButtonText] = useState("Update Info");
@@ -40,8 +40,13 @@ const InfoSection = () => {
   useEffect(() => {
     if (message) {
       dispatch({ type: "addMessageWhenLogin", payload: message });
+    }
+    if (loading === false) {
       buttonRef.current.disabled = false;
       setButtonText("Update Info");
+    }
+    if (error) {
+      dispatch({ type: "addErrors", payload: error });
     }
     if (info) {
       setEmergencyNumber(info.emergencyNumber);
@@ -51,7 +56,7 @@ const InfoSection = () => {
       setCity(info.city);
       setState(info.state);
     }
-  }, [message, dispatch, info]);
+  }, [message, dispatch, info, loading, error]);
   return (
     <>
       <section className="min-h-fit  px-4 ">
@@ -202,7 +207,7 @@ const InfoSection = () => {
               className="text-right text-gray-500 text-sm hover:text-green-500 cursor-pointer"
               onClick={() => navigate(-1)}
             >
-             <span className="font-semibold drop-shadow-md">
+              <span className="font-semibold drop-shadow-md">
                 No need to change?
               </span>{" "}
               go back

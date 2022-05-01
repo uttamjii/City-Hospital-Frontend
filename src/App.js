@@ -30,6 +30,7 @@ import DoctorsSection from "./Pages/AdminDashboard/DoctorsSection/DoctorsSection
 import AppointmentSection from "./Pages/AdminDashboard/AppointmentSection/AppointmentSection.js";
 import ContactMessageSection from "./Pages/AdminDashboard/ContactMessageSection/ContactMessageSection.js";
 import UpdateUserRole from "./Pages/AdminDashboard/UserSection/UpdateUserRole/UpdateUserRole.js";
+import UpdateAppointmentStatus from "./Pages/AdminDashboard/AppointmentSection/UpdateAppointmentStatus/UpdateAppointmentStatus.js";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -96,6 +97,10 @@ const App = () => {
             <Route path="users/updaterole/:id" element={<UpdateUserRole />} />
             <Route path="doctors" element={<DoctorsSection />} />
             <Route path="appointments" element={<AppointmentSection />} />
+            <Route
+              path="appointments/updatestatus/:id"
+              element={<UpdateAppointmentStatus />}
+            />
             <Route path="contactmessages" element={<ContactMessageSection />} />
           </Route>
         ) : null}

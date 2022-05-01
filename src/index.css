@@ -299,6 +299,10 @@ body {
   margin: 0;
 }
 
+.girdColsAppoSectionAdmin {
+  grid-template-columns: 1fr 2fr;
+}
+
 /* *** Utility Classes */
 .pClass {
   @apply p-4 text-gray-400 font-medium text-[3vmin];
@@ -311,7 +315,7 @@ body {
 }
 
 @media screen and (max-width: 244px) {
-#logoCard{
-  left: 0;
-}
+  #logoCard {
+    left: 0;
+  }
 }

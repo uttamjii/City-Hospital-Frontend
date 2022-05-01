@@ -1,5 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { getAllUserAppointmentsReducer } from "./Reducers/appointmentReducer";
+import {
+  getAllUserAppointmentsReducer,
+  getAllAdminAppointmentsReducer,
+} from "./Reducers/appointmentReducer";
 import { userReducer, sendEmailReducer } from "./Reducers/userReducer";
 import { infoReducer } from "./Reducers/infoReducer";
 import { contactMessageReducer } from "./Reducers/contactMessageReducer";
@@ -17,5 +20,6 @@ export default configureStore({
     contactMessages: contactMessageReducer,
     users: getAllUsersReducer,
     admins: getAllAdminsReducer,
+    adminAppointments: getAllAdminAppointmentsReducer,
   },
 });

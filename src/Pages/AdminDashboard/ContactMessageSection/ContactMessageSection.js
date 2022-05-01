@@ -39,7 +39,7 @@ const ContactMessageSection = () => {
           </h1>
         </div>
 
-        <section className="min-h-fit  py-[1.8vmin] px-[2.3vmin] w-11/12 m-auto grid grid-cols-1   gap-6 place-items-center drop-shadow-md ">
+        <section className="min-h-fit  py-[1.8vmin] px-[2.3vmin] w-11/12 m-auto grid grid-cols-1   gap-8 place-items-center drop-shadow-md ">
           {messages && messages.length > 0 ? (
             messages.map((message, index) => (
               <section
