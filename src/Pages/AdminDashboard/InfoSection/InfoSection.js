@@ -85,7 +85,6 @@ const InfoSection = () => {
                 type="text"
                 className="bg-gray-200 shadow-sm px-3 placeholder:font-normal   font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md"
                 placeholder="Emergency Number"
-                required
                 name="emergencyNumber"
                 id="emergencyNumber"
                 value={emergencyNumber}
@@ -107,7 +106,6 @@ const InfoSection = () => {
                 type="text"
                 className="bg-gray-200 shadow-sm px-3 placeholder:font-normal   font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md"
                 placeholder="Phone Number"
-                required
                 name="phoneNumber"
                 id="phoneNumber"
                 value={phoneNumber}
@@ -146,7 +144,6 @@ const InfoSection = () => {
                 type="text"
                 className="bg-gray-200 shadow-sm px-3 placeholder:font-normal   font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md"
                 placeholder="Address"
-                required
                 name="address"
                 id="address"
                 value={address}
@@ -164,7 +161,6 @@ const InfoSection = () => {
                 type="text"
                 className="bg-gray-200 shadow-sm px-3 placeholder:font-normal   font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-2 w-full outline-none rounded-md"
                 placeholder="City"
-                required
                 name="city"
                 id="city"
                 value={city}

@@ -303,6 +303,10 @@ body {
   grid-template-columns: 1fr 2fr;
 }
 
+.girdColsAppoSectionCardProfile {
+  grid-template-columns: 1fr 2fr;
+}
+
 /* *** Utility Classes */
 .pClass {
   @apply p-4 text-gray-400 font-medium text-[3vmin];

@@ -1,43 +1,53 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import doctorUrl from "../../images/doctor1.jpg";
+import doctorUrl from "../../images/doctorAvatarPreview.png";
 import ServiceSection from "../../Components/ServiceSection/ServiceSection";
 import DoctorSection from "../../Components/DoctorSection/DoctorSection";
 import ContactCardInfo from "../../Components/ContactCardInfo/ContactCardInfo";
-
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const doctors = useSelector((state) => state.doctor.doctors);
 
-  const doctors = [
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-  ];
+  let doctorsArray = [];
+
+  const editeNameHandler = (name) => {
+    let nameEdit = name;
+
+    const spliceName =
+      name.slice(3).trim().slice(0, 1).toUpperCase() +
+      name.slice(3).trim().slice(1);
+
+    if (name.startsWith("Dr.")) {
+      nameEdit = spliceName;
+    }
+    if (name.startsWith("dr.")) {
+      nameEdit = spliceName;
+    }
+    if (name.startsWith("dr ")) {
+      nameEdit = spliceName;
+    }
+    if (name.startsWith("dr")) {
+      nameEdit =
+        name.slice(2).trim().slice(0, 1).toUpperCase() +
+        name.slice(2).trim().slice(1);
+    }
+    nameEdit =
+      nameEdit.trim().slice(0, 1).toUpperCase() + nameEdit.trim().slice(1);
+
+    return `Dr. ${nameEdit}`;
+  };
+
+  doctors &&
+    doctors.slice(0, 4).forEach((doctor) => {
+      doctorsArray.push({
+        name: editeNameHandler(doctor.name),
+        image: doctor?.avatar?.url || doctorUrl,
+        description: doctor.description?.slice(0, 72) + "...",
+        specialist: doctor.speciality,
+        id: doctor._id,
+      });
+    });
 
   return (
     <>
@@ -47,7 +57,7 @@ const Home = () => {
           <h1 className="font-bold text-[2.8rem] leading-[3rem] text-center md:text-left sm:text-[4rem] sm:leading-[4rem] md:text-[4.8rem]  md:leading-[4.8rem] py-4">
             Medicine made with care
           </h1>
-          <p className="py-4 text-gray-400 font-medium text-[3vmin]">
+          <p className="py-4 text-gray-500 font-medium text-[3.2vmin]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
             tempus vestibulum mauris quis aliquam. Integer accumsan sodales
             odio, id tempus velit ullamcorper id. Quisque at erat eu.
@@ -108,30 +118,27 @@ const Home = () => {
 
       {/* Home Page Top-Fourth Section Or Fourth Section 😊 Doctor Section */}
 
-      <DoctorSection doctors={doctors} title={true} />
-
-
+      {doctorsArray.length > 0 && (
+        <DoctorSection doctors={doctorsArray} title={true} />
+      )}
 
       {/* Contact Info Card */}
 
       <section className=" min-h-fit py-4 w-screen flex justify-center mb-[3rem] ">
         <section className=" w-[98%]  flex justify-center  flex-col items-center">
-          
-            <div className=" py-12 text-center w-9/12  ">
-              <h1 className="text-[8vmin] font-bold drop-shadow-md leading-[8vmin]">
+          <div className=" py-12 text-center w-9/12  ">
+            <h1 className="text-[8vmin] font-bold drop-shadow-md leading-[8vmin]">
               Contact Us
-              </h1>
-              <p className="p-4 text-gray-400 font-medium text-[3vmin]">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optiore.
-                Reiciendis optio recusandae exercitationem.
-              </p>
-            </div>
+            </h1>
+            <p className="p-4 text-gray-400 font-medium text-[3vmin]">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optiore.
+              Reiciendis optio recusandae exercitationem.
+            </p>
+          </div>
 
           <ContactCardInfo />
-
         </section>
       </section>
-
     </>
   );
 };

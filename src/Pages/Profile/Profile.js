@@ -45,7 +45,7 @@ const Profile = () => {
             Profile
           </h1>
         </div>
-        <div className="space-x-4 text-right pb-4  w-full">
+        <div className="space-x-4 text-right pb-8  w-full">
           <span>
             <div className=" inline relative hoverEffect text-white  bg-blue-900  font-bold py-[1.8vmin] px-[2vmin]  text-[2.5vmin] justify-center items-center">
               <Link

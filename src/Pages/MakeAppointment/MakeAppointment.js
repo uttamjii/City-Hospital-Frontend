@@ -1,14 +1,43 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import WhichPage from "../../Components/whichPageComponent/WhichPage";
 
 import { useDispatch, useSelector } from "react-redux";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { createAppointment } from "../../Actions/appointmentAction";
 
+const specialist = [
+  "Cardiologist",
+  "Allergy and immunology",
+  "Anesthesiology",
+  "Dermatology",
+  "Diagnostic radiology",
+  "Emergency medicine",
+  "Family medicine",
+  "Internal medicine",
+  "Medical genetics",
+  "Neurology",
+  "Nuclear medicine",
+  "Obstetrics and gynecology",
+  "Ophthalmology",
+  "Pathology",
+  "Pediatrics",
+  "Physical medicine and rehabilitation",
+  "Preventive medicine",
+  "Psychiatry",
+  "Radiation oncology",
+  "Surgery",
+  "Urology",
+  "Other",
+];
+
 const MakeAppointment = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  const { doctorId } = useParams();
+
+  console.log(doctorId)
+
   const { loading, message, error } = useSelector(
     (state) => state.forgotPassword
   );
@@ -16,10 +45,10 @@ const MakeAppointment = () => {
   const buttonRef = useRef();
   const [buttonText, setButtonText] = useState("Appointment");
   const optionsReService = useRef();
-  const optionsRefGender = useRef();
   const [optionValueService, setOptionValueService] = useState(
     "Choose your Service"
   );
+  const optionsRefGender = useRef();
   const [optionValueGender, setOptionValueGender] =
     useState("Choose your Gender");
 
@@ -35,7 +64,6 @@ const MakeAppointment = () => {
     const message = e.target.message.value;
     const date = new Date(appointmentDate).getDate();
     const todayDate = new Date().getDate();
-
 
     if ((phone.length < 10 || phone.length > 10) && !(date >= todayDate)) {
       return dispatch({
@@ -87,7 +115,8 @@ const MakeAppointment = () => {
         appointmentTime,
         optionValueGender,
         message,
-        optionValueService
+        optionValueService,
+        doctorId
       )
     );
     e.target.reset();
@@ -108,13 +137,12 @@ const MakeAppointment = () => {
     }
     if (error) {
       dispatch({ type: "addErrors", payload: error });
-      
     }
-    if(user){
+    if (user) {
       setName(user.name);
       setEmail(user.email);
     }
-  }, [loading, message, dispatch, error,user]);
+  }, [loading, message, dispatch, error, user]);
 
   const optionsHandlerSerivce = (e) => {
     setOptionValueService(e.target.innerText);
@@ -134,7 +162,7 @@ const MakeAppointment = () => {
         <div className=" py-14 ml-8 sm:ml-[5.4rem]  hover:text-green-500 ">
           <div className="border-[2px] w-[10vmin] border-green-500 my-2"></div>
           <h1 className="text-[5vmin] font-semibold text-left drop-shadow-md ">
-            Make an Appointment
+            Take an Appointment
             {/* <span className="text-[3vmin] text-gray-400 font-bold hover:text-blue-900">
               OR
             </span>{" "}
@@ -171,7 +199,9 @@ const MakeAppointment = () => {
               required
               name="phone"
               value={phone}
-              onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, "").slice(0, 10))}
+              onChange={(e) =>
+                setPhone(e.target.value.replace(/[^0-9]/g, "").slice(0, 10))
+              }
             />
             {/* Service Options */}
             <section className="relative ">
@@ -188,15 +218,15 @@ const MakeAppointment = () => {
               </section>
 
               <section
-                className="bg-gray-200 shadow-sm  placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-4 -translate-y-2 px-4 outline-none rounded-md  cursor-pointer hidden absolute w-full z-30 select-none "
+                className="bg-gray-200 shadow-sm  placeholder:font-normal  ld font-medium border-b-2 border-green-500 box-border border-opacity-0 hover:border-opacity-100 transition-all duration-[0.4s] py-4 -translate-y-2 px-4 outline-none rounded-md  cursor-pointer hidden absolute w-full z-30 select-none h-[20rem] overflow-y-auto "
                 ref={optionsReService}
                 onClick={optionsHandlerSerivce}
               >
-                <h1 className=" p-1">Neurology</h1>
-                <h1 className=" p-1">Cardiology</h1>
-                <h1 className=" p-1">Dental</h1>
-                <h1 className=" p-1">Ophthalmology</h1>
-                <h1 className=" p-1">Other Services</h1>
+                {specialist.map((item, index) => (
+                  <h1 key={index} className=" p-1">
+                    {item}
+                  </h1>
+                ))}
               </section>
             </section>
             {/* Gender Options */}

@@ -1,68 +1,55 @@
 import React from "react";
 import DoctorSection from "../../Components/DoctorSection/DoctorSection";
 import WhichPage from "../../Components/whichPageComponent/WhichPage";
-import doctorUrl from "../../images/doctor1.jpg";
+import doctorUrl from "../../images/doctorAvatarPreview.png";
 import ContactCardInfo from "../../Components/ContactCardInfo/ContactCardInfo";
+import { useSelector } from "react-redux";
 
 const Doctors = () => {
-  const doctors = [
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-    {
-      name: "Dr. John Doe",
-      image: doctorUrl,
-      description:
-        " I am an ambitious workaholic, but apart from that, pretty simple person.",
-      specialist: "Cardiology",
-    },
-  ];
+  const doctors = useSelector((state) => state.doctor.doctors);
+
+  const doctorsArray = [];
+
+  const editeNameHandler = (name) => {
+    let nameEdit = name;
+
+    const spliceName =
+      name.slice(3).trim().slice(0, 1).toUpperCase() +
+      name.slice(3).trim().slice(1);
+
+    if (name.startsWith("Dr.")) {
+      nameEdit = spliceName;
+    }
+    if (name.startsWith("dr.")) {
+      nameEdit = spliceName;
+    }
+    if (name.startsWith("dr ")) {
+      nameEdit = spliceName;
+    }
+    if (name.startsWith("dr")) {
+      nameEdit =
+        name.slice(2).trim().slice(0, 1).toUpperCase() +
+        name.slice(2).trim().slice(1);
+    }
+    nameEdit =
+      nameEdit.trim().slice(0, 1).toUpperCase() + nameEdit.trim().slice(1);
+
+    return `Dr. ${nameEdit}`;
+  };
+
+  doctors &&
+    doctors.forEach((doctor) => {
+
+      doctorsArray.push({
+        name: editeNameHandler(doctor.name),
+        image: doctor?.avatar?.url || doctorUrl,
+        description: doctor.description?.slice(0, 72) + "...",
+        specialist: doctor.speciality,
+        id: doctor._id,
+      });
+
+
+    });
 
   return (
     <>
@@ -76,15 +63,14 @@ const Doctors = () => {
           </h1>
         </div>
 
-        <DoctorSection doctors={doctors} title={false} />
+        {doctorsArray.length > 0 && (
+          <DoctorSection doctors={doctorsArray} title={false} />
+        )}
       </section>
-
-
 
       {/* Contact Info Card */}
 
       <ContactCardInfo />
-
     </>
   );
 };

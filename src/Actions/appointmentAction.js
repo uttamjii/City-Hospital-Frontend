@@ -12,7 +12,8 @@ export const createAppointment =
     appointmentTime,
     gender,
     message,
-    service
+    service,
+    doctorId
   ) =>
   async (dispatch) => {
     try {
@@ -29,6 +30,7 @@ export const createAppointment =
           gender,
           message,
           service,
+          doctorId
         },
         {
           headers: {

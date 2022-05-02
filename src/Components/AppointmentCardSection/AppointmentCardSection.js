@@ -77,6 +77,35 @@ const AppointmentCard = ({ appointments }) => {
     setHideDeleteButton("");
   };
 
+  
+  const editeNameHandler = (name) => {
+    let nameEdit = name;
+
+    const spliceName =
+      name.slice(3).trim().slice(0, 1).toUpperCase() +
+      name.slice(3).trim().slice(1);
+
+    if (name.startsWith("Dr.")) {
+      nameEdit = spliceName;
+    }
+    if (name.startsWith("dr.")) {
+      nameEdit = spliceName;
+    }
+    if (name.startsWith("dr ")) {
+      nameEdit = spliceName;
+    }
+    if (name.startsWith("dr")) {
+      nameEdit =
+        name.slice(2).trim().slice(0, 1).toUpperCase() +
+        name.slice(2).trim().slice(1);
+    }
+    nameEdit =
+      nameEdit.trim().slice(0, 1).toUpperCase() + nameEdit.trim().slice(1);
+
+    return `Dr. ${nameEdit}`;
+  };
+
+
   useEffect(() => {
     if (deleteAppointmentMessage) {
       dispatch({
@@ -137,7 +166,7 @@ const AppointmentCard = ({ appointments }) => {
                     </h1>
                   </div>
                 </div>
-                <div className="grid grid-cols-2">
+                <div className="grid girdColsAppoSectionCardProfile">
                   <h1
                     className="text-lg font-bold  drop-shadow-md rounded-sm bg-green-500 p-2 m-2 h-12 w-12 text-center hover:bg-blue-900 hover:text-white duration-500 cursor-pointer selection:text-white"
                     title="View Details"
@@ -148,8 +177,8 @@ const AppointmentCard = ({ appointments }) => {
                     <RemoveRedEyeIcon />
                   </h1>
                   {appointment.doctorId && appointment.doctorId.name && (
-                    <h1 className=" font-bold  drop-shadow-md rounded-sm bg-gray-300 flex items-center justify-center m-2 text-center hover:bg-blue-900 hover:text-white duration-500 cursor-pointer selection:text-white">
-                      <span>{appointment.doctorId.name}</span>
+                    <h1 className=" font-bold  drop-shadow-md rounded-sm bg-gray-300 flex items-center justify-center m-2 text-center hover:bg-blue-900 hover:text-white duration-500 cursor-pointer px-3 selection:text-white">
+                      <span>{editeNameHandler(appointment.doctorId.name)}</span>
                     </h1>
                   )}
                 </div>

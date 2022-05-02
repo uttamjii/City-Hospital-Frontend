@@ -15,7 +15,7 @@ import SignUp from "./Pages/SignUp/SignUp.js";
 import Profile from "./Pages/Profile/Profile.js";
 import EditProfile from "./Pages/EditProfile/EditProfile.js";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword.js";
-import ErrorCard from "./Components/ErrorCard/ErrorCard.js";
+import AlertCard from "./Components/AlertCard/AlertCard.js";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "./Actions/userActions";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword.js";
@@ -31,6 +31,9 @@ import AppointmentSection from "./Pages/AdminDashboard/AppointmentSection/Appoin
 import ContactMessageSection from "./Pages/AdminDashboard/ContactMessageSection/ContactMessageSection.js";
 import UpdateUserRole from "./Pages/AdminDashboard/UserSection/UpdateUserRole/UpdateUserRole.js";
 import UpdateAppointmentStatus from "./Pages/AdminDashboard/AppointmentSection/UpdateAppointmentStatus/UpdateAppointmentStatus.js";
+import AddNewDoctor from "./Pages/AdminDashboard/DoctorsSection/AddNewDoctor/AddNewDoctor.js";
+import { getAllDoctors } from "./Actions/doctorAction.js";
+import UpdateDoctorDetails from "./Pages/AdminDashboard/DoctorsSection/UpdateDoctorDetails/UpdateDoctorDetails.js";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -46,6 +49,7 @@ const App = () => {
       dispatch({ type: "clearAllDataIfNoCookie" });
     }
     dispatch(getAllBasicInfo());
+    dispatch(getAllDoctors());
   }, [dispatch]);
 
   useEffect(() => {
@@ -88,6 +92,7 @@ const App = () => {
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/appointment" element={<MakeAppointment />} />
+        <Route path="/appointment/:doctorId" element={<MakeAppointment />} />
 
         {isAuthenticated && user.role === "admin" ? (
           <Route path="/admin/dashboard" element={<AdminDashoard />}>
@@ -96,6 +101,11 @@ const App = () => {
             <Route path="users" element={<UserSection />} />
             <Route path="users/updaterole/:id" element={<UpdateUserRole />} />
             <Route path="doctors" element={<DoctorsSection />} />
+            <Route path="doctors/addnewdoctor" element={<AddNewDoctor />} />
+            <Route
+              path="doctors/update/:id"
+              element={<UpdateDoctorDetails />}
+            />
             <Route path="appointments" element={<AppointmentSection />} />
             <Route
               path="appointments/updatestatus/:id"
@@ -133,13 +143,13 @@ const App = () => {
           element={isAuthenticated ? <ChangePassword /> : <Login />}
         />
 
-        {/* <Route path="*" element={<Home />} /> */}
+        <Route path="*" element={<Home />} />
       </Routes>
 
       <FooterTop />
       <Footer />
       <ScrollToTop />
-      <ErrorCard />
+      <AlertCard />
     </BrowserRouter>
   );
 };

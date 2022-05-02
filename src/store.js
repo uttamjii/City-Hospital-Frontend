@@ -10,6 +10,7 @@ import {
   getAllAdminsReducer,
   getAllUsersReducer,
 } from "./Reducers/adminUserReducer";
+import { doctorReducer } from "./Reducers/doctorReducer";
 
 export default configureStore({
   reducer: {
@@ -21,5 +22,6 @@ export default configureStore({
     users: getAllUsersReducer,
     admins: getAllAdminsReducer,
     adminAppointments: getAllAdminAppointmentsReducer,
+    doctor:doctorReducer
   },
 });

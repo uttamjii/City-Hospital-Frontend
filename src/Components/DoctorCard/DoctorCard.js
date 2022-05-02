@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../Button/Button";
 
+
 const DoctorCard = ({ doctor }) => {
   return (
     doctor && (
@@ -19,7 +20,7 @@ const DoctorCard = ({ doctor }) => {
         <p className="p-4 text-gray-400 font-medium text-lg">
           {doctor.description}
         </p>
-        <Button name="Book Now" />
+        <Button to={`/appointment/${doctor?.id}`} name="Book Now" />
       </div>
     )
   );

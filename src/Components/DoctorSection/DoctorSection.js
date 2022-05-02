@@ -18,7 +18,7 @@ const DoctorSection = ({ doctors, title }) => {
           </div>
         )}
 
-        <div className="w-[90%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center gap-2">
+        <div className="w-[90%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center gap-6">
           {doctors &&
             doctors.map((doctor, index) => (
               <DoctorCard doctor={doctor} key={index} />
