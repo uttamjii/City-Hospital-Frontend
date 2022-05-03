@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../Button/Button";
 
-
 const DoctorCard = ({ doctor }) => {
   return (
     doctor && (
@@ -20,7 +19,13 @@ const DoctorCard = ({ doctor }) => {
         <p className="p-4 text-gray-400 font-medium text-lg">
           {doctor.description}
         </p>
-        <Button to={`/appointment/${doctor?.id}`} name="Book Now" />
+        {doctor?.available === "YES" ? (
+          <Button to={`/appointment/${doctor?.id}`} name="Book Now" />
+        ) : (
+          <div className=" inline relative hoverEffect text-red-600  bg-blue-900  font-bold py-[2vmin] px-[2.5vmin] text-[2.5vmin]">
+            <div className=" relative z-[3]  ">Unavailable</div>
+          </div>
+        )}
       </div>
     )
   );

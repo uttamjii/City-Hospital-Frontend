@@ -3,8 +3,6 @@ import constants from "../Constants";
 
 const url = constants.url;
 
-
-
 export const loginUser = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: "loginUserRequest" });
@@ -68,9 +66,11 @@ export const createUser =
           confirmPassword,
           avatar,
         },
-        {headers: {
-          "Content-Type": "application/json",
-        }}
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       dispatch({
@@ -87,7 +87,7 @@ export const createUser =
 
 export const updateProfile = (name, email, avatar) => async (dispatch) => {
   try {
-    console.log(document.cookie.split("=")[1])
+    console.log(document.cookie.split("=")[1]);
     dispatch({ type: "updateProfileRequest" });
 
     const { data } = await axios.put(
@@ -101,7 +101,7 @@ export const updateProfile = (name, email, avatar) => async (dispatch) => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${document.cookie.split("=")[1]}`,
-        }
+        },
       }
     );
 
@@ -133,7 +133,7 @@ export const changePassword =
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${document.cookie.split("=")[1]}`,
-          }
+          },
         }
       );
 
@@ -158,9 +158,11 @@ export const forgotPassword = (email) => async (dispatch) => {
       {
         email,
       },
-      {headers: {
-        "Content-Type": "application/json",
-      }}
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
 
     dispatch({
@@ -186,9 +188,11 @@ export const resetPassword =
           password,
           confirmPassword,
         },
-        {headers: {
-          "Content-Type": "application/json",
-        }}
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       dispatch({
@@ -208,15 +212,12 @@ export const deleteUserAccount = () => async (dispatch) => {
     dispatch({ type: "deleteAccountRequest" });
     console.log(document.cookie.split("=")[1]);
 
-    const { data } = await axios.delete(
-      `${url}/user/deleteaccount`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${document.cookie.split("=")[1]}`,
-        }
-      }
-    );
+    const { data } = await axios.delete(`${url}/user/deleteaccount`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${document.cookie.split("=")[1]}`,
+      },
+    });
 
     dispatch({
       type: "deleteAccountSuccess",
@@ -225,6 +226,39 @@ export const deleteUserAccount = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "deleteAccountFailure",
+      payload: error.response?.data?.message,
+    });
+  }
+};
+
+export const googleLogin = () => async (dispatch) => {
+  try {
+    dispatch({ type: "loadUserRequest" });
+
+    const repone = await fetch(`${url}/auth/google/success`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Credentials": true,
+        Authorization: `Bearer ${document.cookie.split("=")[1]}`,
+      },
+      credentials: "include",
+    });
+
+    const data = await repone.json();
+
+    if (data?.message === "Please login first") {
+      return dispatch({ type: "addErrors", payload: "" });
+    }
+
+    dispatch({
+      type: "loadUserSuccess",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "loadUserFailure",
       payload: error.response?.data?.message,
     });
   }

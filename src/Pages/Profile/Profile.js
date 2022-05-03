@@ -32,8 +32,6 @@ const Profile = () => {
     }
   }, [user, dispatch]);
 
-
-
   return (
     <>
       <WhichPage whichPage="Profile" />
@@ -56,13 +54,18 @@ const Profile = () => {
               </Link>
             </div>
           </span>
-          <span>
-            <div className=" inline relative hoverEffect text-white  bg-blue-900  font-bold py-[1.8vmin] px-[2vmin]  text-[2.5vmin]  justify-center items-center">
-              <Link to={"/profile/changepassword"} className=" relative z-[3]">
-                <ChangeCircleIcon className="profileIcons" /> Change Password
-              </Link>
-            </div>
-          </span>
+          {user && user?.googleAuth === false && (
+            <span>
+              <div className=" inline relative hoverEffect text-white  bg-blue-900  font-bold py-[1.8vmin] px-[2vmin]  text-[2.5vmin]  justify-center items-center">
+                <Link
+                  to={"/profile/changepassword"}
+                  className=" relative z-[3]"
+                >
+                  <ChangeCircleIcon className="profileIcons" /> Change Password
+                </Link>
+              </div>
+            </span>
+          )}
         </div>
 
         <section className=" flex flex-col sm:flex-row justify-center items-center space-x-6 space-y-6 sm:px-4  py-4">
@@ -94,7 +97,6 @@ const Profile = () => {
         </section>
       </section>
 
-
       <section className=" min-h-[30rem]  max-h-screen  mb-14 w-full ">
         <div className=" py-14 ml-8 sm:ml-[5.4rem]  hover:text-green-500  ">
           <div className="border-[2px] w-[10vmin] border-green-500 my-2"></div>
@@ -103,14 +105,10 @@ const Profile = () => {
           </h1>
         </div>
 
-
         {/* Appointment History Card Section */}
 
         <AppointmentCard appointments={appointments} />
-
-
       </section>
-
 
       {/* Delete Profile */}
 

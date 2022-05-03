@@ -6,23 +6,28 @@ import googleIcon from "../../images/google.png";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../Actions/userActions";
 
+import constants from "../../Constants";
+
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const buttonRef = useRef();
   const [buttonText, setButtonText] = useState("login");
- 
 
-  const { isAuthenticated ,loading } = useSelector((state) => state.user);
+  const { isAuthenticated, loading } = useSelector((state) => state.user);
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    
+
     buttonRef.current.disabled = true;
     setButtonText("Please Wait...");
 
     dispatch(loginUser(e.target.email.value, e.target.password.value));
+  };
+
+  const googleLoginHandler = () => {
+    window.open(`${constants.url}/auth/google`, "_self");
   };
 
   useEffect(() => {
@@ -110,7 +115,10 @@ const Login = () => {
             Or
           </div>
 
-          <div className="text-center   py-2 font-bold bg-red-600  hover:bg-red-500 cursor-pointer hover:text-white transition-all duration-500  flex justify-center items-center rounded-md">
+          <div
+            className="text-center   py-2 font-bold bg-red-600  hover:bg-red-500 cursor-pointer hover:text-white transition-all duration-500  flex justify-center items-center rounded-md"
+            onClick={googleLoginHandler}
+          >
             <img src={googleIcon} alt="google" className="h-4 w-4" />
             <span className="px-2 font-bold drop-shadow-md">Google</span>
           </div>

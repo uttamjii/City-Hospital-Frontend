@@ -17,7 +17,7 @@ import EditProfile from "./Pages/EditProfile/EditProfile.js";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword.js";
 import AlertCard from "./Components/AlertCard/AlertCard.js";
 import { useDispatch, useSelector } from "react-redux";
-import { loadUser } from "./Actions/userActions";
+import { googleLogin, loadUser } from "./Actions/userActions";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword.js";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword.js";
 import MakeAppointment from "./Pages/MakeAppointment/MakeAppointment.js";
@@ -48,6 +48,7 @@ const App = () => {
     } else {
       dispatch({ type: "clearAllDataIfNoCookie" });
     }
+    dispatch(googleLogin());
     dispatch(getAllBasicInfo());
     dispatch(getAllDoctors());
   }, [dispatch]);
@@ -140,7 +141,13 @@ const App = () => {
         />
         <Route
           path="/profile/changepassword"
-          element={isAuthenticated ? <ChangePassword /> : <Login />}
+          element={
+            isAuthenticated && user?.googleAuth === false ? (
+              <ChangePassword />
+            ) : (
+              <Login />
+            )
+          }
         />
 
         <Route path="*" element={<Home />} />

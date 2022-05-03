@@ -5,6 +5,7 @@ import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { NavLink } from "react-router-dom";
 import image from "../../../images/avatarPreview.png";
 import { useSelector, useDispatch } from "react-redux";
+import constants from "../../../Constants.js";
 
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState("");
@@ -39,7 +40,17 @@ const Header = () => {
   });
 
   const logoutHandler = () => {
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    document.cookie.split(";").forEach(function (c) {
+      document.cookie =
+        c.trim().split("=")[0] +
+        "=;" +
+        "expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    });
+
+    if (user?.googleAuth === true) {
+      window.open(`${constants.url}/auth/google/logout`, "_self");
+    }
+
     dispatch({ type: "logoutUser" });
     dispatch({ type: "clearAppointmentsData" });
     if (toggleMenu === "translateHam") {

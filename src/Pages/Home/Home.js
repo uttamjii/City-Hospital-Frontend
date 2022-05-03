@@ -46,6 +46,7 @@ const Home = () => {
         description: doctor.description?.slice(0, 72) + "...",
         specialist: doctor.speciality,
         id: doctor._id,
+        available: doctor?.available,
       });
     });
 
