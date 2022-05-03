@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
-import {
-  deleteUserAndAdmin,
-  getAllAdmins,
-} from "../../../Actions/adminUsersActions";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import { EditRounded } from "@mui/icons-material";
 import image from "../../../images/avatarPreview.png";
