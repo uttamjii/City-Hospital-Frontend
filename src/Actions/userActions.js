@@ -244,12 +244,13 @@ export const googleLogin = () => async (dispatch) => {
         Authorization: `Bearer ${document.cookie.split("=")[1]}`,
       },
       credentials: "include",
+      withCredentials: true,
     });
 
     const data = await repone.json();
 
-    if (data?.message === "Please login first") {
-      return dispatch({ type: "addErrors", payload: "" });
+    if (data?.message === "login failed") {
+      return dispatch({ type: "addErrors", payload: data?.message });
     }
 
     dispatch({
