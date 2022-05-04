@@ -5,7 +5,6 @@ import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { NavLink } from "react-router-dom";
 import image from "../../../images/avatarPreview.png";
 import { useSelector, useDispatch } from "react-redux";
-import constants from "../../../Constants.js";
 
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState("");
