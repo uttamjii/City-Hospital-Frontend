@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import doctorUrl from "../../images/doctorAvatarPreview.png";
 import ServiceSection from "../../Components/ServiceSection/ServiceSection";
 import DoctorSection from "../../Components/DoctorSection/DoctorSection";
 import ContactCardInfo from "../../Components/ContactCardInfo/ContactCardInfo";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const Home = () => {
   const doctors = useSelector((state) => state.doctor.doctors);
+
+  const { token } = useParams();
 
   let doctorsArray = [];
 
@@ -49,6 +52,12 @@ const Home = () => {
         available: doctor?.available,
       });
     });
+
+  useEffect(() => {
+    if (token) {
+      document.cookie = `token=${token}`;
+    }
+  }, [token]);
 
   return (
     <>

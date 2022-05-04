@@ -231,43 +231,4 @@ export const deleteUserAccount = () => async (dispatch) => {
   }
 };
 
-export const googleLogin = () => async (dispatch) => {
-  try {
-    dispatch({ type: "loadUserRequest" });
 
-    const { data } = await axios.get(`${url}/auth/google/success`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    });
-
-    // const repone = await fetch(`${url}/auth/google/success`, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //     "Access-Control-Allow-Credentials": true,
-    //     Authorization: `Bearer ${document.cookie.split("=")[1]}`,
-    //   },
-    //   credentials: "include",
-    //   withCredentials: true,
-    // });
-
-    // const data = await repone.json();
-
-    // if (data?.message === "login failed") {
-    //   return dispatch({ type: "addErrors", payload: data?.message });
-    // }
-
-    dispatch({
-      type: "loadUserSuccess",
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: "loadUserFailure",
-      payload: error.response?.data?.message,
-    });
-  }
-};

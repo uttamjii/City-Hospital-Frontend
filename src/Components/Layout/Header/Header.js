@@ -47,10 +47,6 @@ const Header = () => {
         "expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     });
 
-    if (user?.googleAuth === true) {
-      window.open(`${constants.url}/auth/google/logout`, "_self");
-    }
-
     dispatch({ type: "logoutUser" });
     dispatch({ type: "clearAppointmentsData" });
     if (toggleMenu === "translateHam") {

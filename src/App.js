@@ -17,7 +17,7 @@ import EditProfile from "./Pages/EditProfile/EditProfile.js";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword.js";
 import AlertCard from "./Components/AlertCard/AlertCard.js";
 import { useDispatch, useSelector } from "react-redux";
-import { googleLogin, loadUser } from "./Actions/userActions";
+import { loadUser } from "./Actions/userActions";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword.js";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword.js";
 import MakeAppointment from "./Pages/MakeAppointment/MakeAppointment.js";
@@ -48,7 +48,6 @@ const App = () => {
     } else {
       dispatch({ type: "clearAllDataIfNoCookie" });
     }
-    dispatch(googleLogin());
     dispatch(getAllBasicInfo());
     dispatch(getAllDoctors());
   }, [dispatch]);
@@ -88,6 +87,7 @@ const App = () => {
       {isAuthenticated && user.role === "admin" ? <DashBoardAdminIcon /> : null}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/:token" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Service />} />
         <Route path="/doctors" element={<Doctors />} />
