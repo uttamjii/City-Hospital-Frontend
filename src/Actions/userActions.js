@@ -256,9 +256,9 @@ export const googleLogin = () => async (dispatch) => {
 
     // const data = await repone.json();
 
-    if (data?.message === "login failed") {
-      return dispatch({ type: "addErrors", payload: data?.message });
-    }
+    // if (data?.message === "login failed") {
+    //   return dispatch({ type: "addErrors", payload: data?.message });
+    // }
 
     dispatch({
       type: "loadUserSuccess",
