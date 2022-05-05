@@ -34,10 +34,13 @@ import UpdateAppointmentStatus from "./Pages/AdminDashboard/AppointmentSection/U
 import AddNewDoctor from "./Pages/AdminDashboard/DoctorsSection/AddNewDoctor/AddNewDoctor.js";
 import { getAllDoctors } from "./Actions/doctorAction.js";
 import UpdateDoctorDetails from "./Pages/AdminDashboard/DoctorsSection/UpdateDoctorDetails/UpdateDoctorDetails.js";
+import Loader from "./Components/Loader/Loader.js";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { error, user, isAuthenticated } = useSelector((state) => state.user);
+  const { error, user, isAuthenticated, loading } = useSelector(
+    (state) => state.user
+  );
   const { error: forgotPasswordError, message } = useSelector(
     (state) => state.user
   );
@@ -85,6 +88,12 @@ const App = () => {
     <BrowserRouter>
       <Header />
       {isAuthenticated && user.role === "admin" ? <DashBoardAdminIcon /> : null}
+      {loading && (
+        <div className="fixed top-11 w-screen z-[1110]">
+          <Loader />
+        </div>
+      )}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:token" element={<Home />} />

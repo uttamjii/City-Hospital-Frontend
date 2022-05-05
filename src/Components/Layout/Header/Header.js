@@ -187,7 +187,7 @@ const Header = () => {
       {/* Mobile Devices  Navbar */}
 
       <section
-        className={` fixed top-0  right-0 min-h-screen h-screen overflow-y-scroll w-screen sm:w-10/12 flex  justify-start flex-col space-y-7 text-2xl sm:text-3xl bg-white  text-black font-bold space-x-6 antialiased  selection:text-green-500 p-6 transition-all duration-[1.5s] translate-x-[100%] shadow-xl ${toggleMenu} z-[9999] `}
+        className={` fixed top-0  right-0 min-h-screen h-screen overflow-y-auto w-screen sm:w-10/12 flex  justify-start flex-col space-y-7 text-2xl sm:text-3xl bg-white  text-black font-bold space-x-6 antialiased  selection:text-green-500 p-6 transition-all duration-[1.5s] translate-x-[100%] shadow-xl ${toggleMenu} z-[9999] `}
       >
         <div
           className="w-full text-right px-8 mt-12 cursor-pointer "

@@ -5,13 +5,14 @@ import {
   getAllContactMessages,
 } from "../../../Actions/contactMessageAction";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Loader from "../../../Components/Loader/Loader";
 
 const ContactMessageSection = () => {
   const dispatch = useDispatch();
 
   const [hideDeleteButton, setHideDeleteButton] = useState("");
 
-  const { messages, message } = useSelector((state) => state.contactMessages);
+  const { messages, message ,loading } = useSelector((state) => state.contactMessages);
 
   const deleteMessageHandler = async (id) => {
     setHideDeleteButton("hidden");
@@ -40,6 +41,7 @@ const ContactMessageSection = () => {
         </div>
 
         <section className="min-h-fit  py-[1.8vmin] px-[2.3vmin] w-11/12 m-auto grid grid-cols-1   gap-8 place-items-center drop-shadow-md ">
+        {loading && <Loader />}
           {messages && messages.length > 0 ? (
             messages.map((message, index) => (
               <section

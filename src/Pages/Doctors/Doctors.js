@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DoctorSection from "../../Components/DoctorSection/DoctorSection";
 import WhichPage from "../../Components/whichPageComponent/WhichPage";
 import doctorUrl from "../../images/doctorAvatarPreview.png";
 import ContactCardInfo from "../../Components/ContactCardInfo/ContactCardInfo";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllDoctors } from "../../Actions/doctorAction.js";
+import Loader from "../../Components/Loader/Loader";
 
 const Doctors = () => {
-  const doctors = useSelector((state) => state.doctor.doctors);
+  const { doctors, loading } = useSelector((state) => state.doctor);
+  const dispatch = useDispatch();
 
   const doctorsArray = [];
 
@@ -39,7 +42,6 @@ const Doctors = () => {
 
   doctors &&
     doctors.forEach((doctor) => {
-
       doctorsArray.push({
         name: editeNameHandler(doctor.name),
         image: doctor?.avatar?.url || doctorUrl,
@@ -48,9 +50,11 @@ const Doctors = () => {
         id: doctor._id,
         available: doctor?.available,
       });
-
-
     });
+
+  useEffect(() => {
+    dispatch(getAllDoctors());
+  }, [dispatch]);
 
   return (
     <>
@@ -63,6 +67,8 @@ const Doctors = () => {
             Our Featured Doctors
           </h1>
         </div>
+
+        {loading && <Loader />}
 
         {doctorsArray.length > 0 && (
           <DoctorSection doctors={doctorsArray} title={false} />

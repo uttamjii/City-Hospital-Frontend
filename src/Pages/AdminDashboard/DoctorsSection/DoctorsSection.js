@@ -10,6 +10,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { deleteDoctor, getAllDoctors } from "../../../Actions/doctorAction";
 import VaccinesIcon from "@mui/icons-material/Vaccines";
+import Loader from "../../../Components/Loader/Loader";
 
 const DoctorsSection = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const DoctorsSection = () => {
   const toggleRef = useRef();
   const [openInfoCardData, setOpenInfoCardData] = useState(null);
 
-  const { doctors, message, error } = useSelector((state) => state.doctor);
+  const { doctors, message, error ,loading} = useSelector((state) => state.doctor);
 
   const [hideDeleteAdminButton, setHideDeleteAdminButton] = useState("");
 
@@ -113,6 +114,7 @@ const DoctorsSection = () => {
           </span>
         </div>
 
+          {loading && <Loader />}
         <section className="min-h-[24rem]   py-[1.8vmin] px-[2.3vmin] w-full lg:w-11/12 m-auto grid grid-cols-1   md:grid-cols-2 lg:grid-cols-3  gap-4 place-items-center drop-shadow-md overflow-x-hidden ">
           {doctors && doctors.length > 0 ? (
             doctors.map((doctor, index) => (

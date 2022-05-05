@@ -3,7 +3,7 @@ import React from "react";
 const ServiceCard = ({service}) => {
   return (
     <div
-      className=" ServiceCard w-full min-h-full  flex justify-center flex-col text-center p-4 shadow-md hover:bg-blue-900 hover:border-b-4 hover:border-green-500 box-border transition-all duration-[0.7s]"
+      className=" ServiceCard w-full min-h-full  flex justify-center flex-col text-center p-4 shadow-md hover:bg-blue-900 border-b-4 border-green-500 border-opacity-0 hover:border-opacity-100 box-border transition-all duration-[0.7s]"
     >
       <div className="flex justify-center flex-col items-center space-y-3 p-4">
         {service.icon && service.icon}

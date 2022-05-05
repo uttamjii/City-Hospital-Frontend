@@ -22,7 +22,7 @@ const DoctorCard = ({ doctor }) => {
         {doctor?.available === "YES" ? (
           <Button to={`/appointment/${doctor?.id}`} name="Book Now" />
         ) : (
-          <div className=" inline relative hoverEffect text-red-600  bg-blue-900  font-bold py-[2vmin] px-[2.5vmin] text-[2.5vmin]">
+          <div className=" inline relative hoverEffect text-gray-200 hover:text-red-200  bg-blue-900  font-bold py-[2vmin] px-[2.5vmin] text-[2.5vmin]">
             <div className=" relative z-[3]  ">Unavailable</div>
           </div>
         )}

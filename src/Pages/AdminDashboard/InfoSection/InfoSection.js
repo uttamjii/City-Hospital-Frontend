@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateAllBasicInfo } from "../../../Actions/infoAction";
+import Loader from "../../../Components/Loader/Loader";
 
 const InfoSection = () => {
   const dispatch = useDispatch();
@@ -73,6 +74,7 @@ const InfoSection = () => {
       </section>
       <section className="flex justify-center pb-20">
         <section className="shadow-md w-11/12 sm:w-10/12 md:w-8/12 lg:w-7/12 m-auto  p-4 space-y-4">
+          {loading && <Loader />}
           <form className=" space-y-4 " onSubmit={formSubmitHandler}>
             <section className="space-y-2">
               <label

@@ -8,12 +8,15 @@ import {
 import { EditRounded } from "@mui/icons-material";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../../Components/Loader/Loader";
 
 const AppointmentSection = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { appointments } = useSelector((state) => state.adminAppointments);
+  const { appointments, loading } = useSelector(
+    (state) => state.adminAppointments
+  );
   const { message: deleteAppointmentMessage, error } = useSelector(
     (state) => state.forgotPassword
   );
@@ -65,7 +68,7 @@ const AppointmentSection = () => {
   };
 
   const editStatusHandler = (id, status) => {
-    let statusCap = status.slice(0,1).toUpperCase() + status.slice(1);
+    let statusCap = status.slice(0, 1).toUpperCase() + status.slice(1);
     navigate(`updatestatus/${id}?status=${statusCap}`);
   };
 
@@ -99,6 +102,7 @@ const AppointmentSection = () => {
         </div>
 
         <section className="min-h-fit  py-[1.8vmin] px-[2.3vmin] w-full sm:w-11/12 m-auto grid grid-cols-1   gap-8 place-items-center drop-shadow-md ">
+          {loading && <Loader />}
           {appointments && appointments.length > 0 ? (
             appointments.map((appointmentData, index) => (
               <section

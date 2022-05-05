@@ -11,6 +11,7 @@ import image from "../../../images/avatarPreview.png";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../../Components/Loader/Loader";
 
 const UserSection = () => {
   const dispatch = useDispatch();
@@ -21,8 +22,13 @@ const UserSection = () => {
     users,
     message,
     error: asUserError,
+    loading: asUserLoading,
   } = useSelector((state) => state.users);
-  const { admins, error: asAdminError } = useSelector((state) => state.admins);
+  const {
+    admins,
+    error: asAdminError,
+    loading: asAdminLoading,
+  } = useSelector((state) => state.admins);
 
   const [hideDeleteAdminButton, setHideDeleteAdminButton] = useState("");
   const [hideDeleteUserButton, setHideDeleteUserButton] = useState("");
@@ -42,7 +48,7 @@ const UserSection = () => {
   };
 
   const editRoleHandler = (id, role) => {
-    let roleCap = role.slice(0,1).toUpperCase() + role.slice(1);
+    let roleCap = role.slice(0, 1).toUpperCase() + role.slice(1);
     navigate(`updaterole/${id}?role=${roleCap}`);
   };
 
@@ -72,6 +78,8 @@ const UserSection = () => {
             Admins
           </h1>
         </div>
+
+        {asAdminLoading && <Loader />}
 
         <section className="min-h-[24rem]   py-[1.8vmin] px-[2.3vmin] w-full lg:w-11/12 m-auto grid grid-cols-1   md:grid-cols-2 lg:grid-cols-3  gap-4 place-items-center drop-shadow-md max-h-[50rem] overflow-y-auto overflow-x-hidden  shadow-lg">
           {admins && admins.length > 0 ? (
@@ -149,6 +157,9 @@ const UserSection = () => {
           )}
         </section>
       </section>
+
+      
+      {asUserLoading && <Loader />}
 
       <section className="min-h-fit pb-16 ">
         <div className=" p-14   hover:text-green-500   ">

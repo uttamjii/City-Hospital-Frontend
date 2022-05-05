@@ -4,11 +4,13 @@ import doctorUrl from "../../images/doctorAvatarPreview.png";
 import ServiceSection from "../../Components/ServiceSection/ServiceSection";
 import DoctorSection from "../../Components/DoctorSection/DoctorSection";
 import ContactCardInfo from "../../Components/ContactCardInfo/ContactCardInfo";
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getAllDoctors } from "../../Actions/doctorAction.js";
 
 const Home = () => {
   const doctors = useSelector((state) => state.doctor.doctors);
+  const dispatch = useDispatch();
 
   const { token } = useParams();
 
@@ -58,6 +60,10 @@ const Home = () => {
       document.cookie = `token=${token}`;
     }
   }, [token]);
+
+  useEffect(() => {
+    dispatch(getAllDoctors());
+  }, [dispatch]);
 
   return (
     <>
