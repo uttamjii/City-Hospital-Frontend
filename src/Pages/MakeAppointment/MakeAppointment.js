@@ -36,7 +36,7 @@ const MakeAppointment = () => {
   const { user } = useSelector((state) => state.user);
   const { doctorId } = useParams();
 
-  console.log(doctorId)
+  console.log(doctorId);
 
   const { loading, message, error } = useSelector(
     (state) => state.forgotPassword
@@ -173,6 +173,13 @@ const MakeAppointment = () => {
         {/* Login Section */}
 
         <section className="shadow-md py-8 sm:w-10/12 md:w-8/12 lg:w-7/12 m-auto  p-4 space-y-4">
+          {/* <div className=" lg:px-4">
+            <h1 className=" text-gray-500 text-sm ">
+              <span className="font-semibold drop-shadow-md">
+                We will inform you on your mail when appointment is confirmed.
+              </span>{" "}
+            </h1>
+          </div> */}
           <form onSubmit={formSubmitHandler} className=" space-y-4">
             <input
               type="text"
@@ -289,7 +296,7 @@ const MakeAppointment = () => {
               className="text-right text-gray-500 text-sm hover:text-green-500"
             >
               <span className="font-semibold drop-shadow-md">
-                have an account?
+                Please login to save your data?
               </span>{" "}
               Sign In
             </Link>
