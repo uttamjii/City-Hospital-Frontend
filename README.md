@@ -1,6 +1,6 @@
 > # 							*MERN Project*						
 
-### City Hospital  (Hospital Management System)
+### City Hospital Frontend (Hospital Management System)
 > ####  [   Link ](https://city-hospital.vercel.app/ "   Link")
 
 Make Sure to Create a config.ev file in backend/config directory and add appropriate variable in order to use the app.
